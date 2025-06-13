@@ -10,6 +10,8 @@
     --border-color: #2a415c;
     --hero-overlay: rgba(3, 13, 24, 0.7);
     --dropdown-bg: #1a2f4a;
+    /* NOVO: Cor de fundo do menu com transparência */
+    --menu-overlay-bg: rgba(11, 30, 50, 0.85); 
 }
 
 body.light-mode {
@@ -24,6 +26,8 @@ body.light-mode {
     --border-color: #dee2e6;
     --hero-overlay: rgba(255, 255, 255, 0.2);
     --dropdown-bg: #ffffff;
+    /* NOVO: Cor de fundo do menu com transparência para o modo claro */
+    --menu-overlay-bg: rgba(248, 249, 250, 0.85);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,7 +44,7 @@ a { color: var(--primary-color); text-decoration: none; }
 h1, h2, h3, h4 { color: var(--primary-color); }
 main section { padding: 4rem 5%; text-align: center; }
 
-/* Cabeçalho e Navegação */
+/* ... (Todo o CSS de Desktop permanece o mesmo até a Media Query) ... */
 header { background-color: var(--surface-color); padding: 1rem 5%; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); transition: background-color 0.3s, border-color 0.3s; }
 nav { display: flex; justify-content: space-between; align-items: center; }
 .logo { font-size: 1.8rem; font-weight: 700; color: var(--primary-color); }
@@ -48,8 +52,6 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 .nav-links a { font-weight: 600; transition: color 0.3s ease; font-size: 0.9rem; }
 .nav-links a:hover { color: var(--text-color); }
 .nav-controls { display: flex; align-items: center; gap: 0.5rem; }
-
-/* Dropdown */
 .dropdown { position: relative; }
 .dropdown-toggle { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-muted-color); padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: background-color 0.2s, color 0.2s; }
 .dropdown-toggle:hover { background-color: var(--secondary-color); color: var(--text-color); }
@@ -59,12 +61,8 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 .dropdown-menu a { color: var(--text-color); padding: 12px 16px; text-decoration: none; display: block; font-size: 0.9rem; transition: background-color 0.2s; }
 .dropdown-menu a i { margin-right: 10px; width: 16px; text-align: center; }
 .dropdown-menu a:hover { background-color: var(--primary-color); color: #fff; }
-
-/* Botões de Menu Mobile */
-.hamburger-menu { display: none; background: none; border: none; color: var(--text-color); font-size: 1.5rem; cursor: pointer; }
+.hamburger-menu { display: none; background: none; border: none; color: var(--text-color); font-size: 1.5rem; cursor: pointer; z-index: 1003; }
 .close-menu-btn { display: none; }
-
-/* Seções Principais */
 #hero { min-height: 80vh; display: flex; justify-content: center; align-items: center; background: var(--hero-overlay) url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070') no-repeat center center/cover; }
 .hero-content { max-width: 800px; text-align: center; }
 .hero-content h1 { font-size: 3rem; margin-bottom: 1rem; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
@@ -72,8 +70,6 @@ nav { display: flex; justify-content: space-between; align-items: center; }
 .cta-button { background-color: var(--primary-color); color: #fff; padding: 0.8rem 1.6rem; border-radius: 5px; font-weight: 700; display: inline-block; transition: background-color 0.3s, transform 0.2s; }
 .cta-button:hover { background-color: #007bb5; transform: translateY(-2px); }
 h2 { font-size: 2.5rem; margin-bottom: 3rem; }
-
-/* Demonstração ao Vivo */
 #live-demo { background-color: var(--surface-color); transition: background-color 0.3s; }
 .demo-container { display: flex; gap: 2rem; margin-top: 2rem; align-items: flex-start; }
 .crane-area { flex: 3; height: 550px; position: relative; overflow: hidden; border-radius: 8px; border: 1px solid var(--border-color); }
@@ -95,29 +91,13 @@ h2 { font-size: 2.5rem; margin-bottom: 3rem; }
 .data-log li { padding: 0.6rem 0; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; }
 .data-log li:last-child { border-bottom: none; }
 .data-log i { margin-right: 10px; color: var(--primary-color); }
-
-/* Outras Seções */
 .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; text-align: left; }
 .feature-card { background-color: var(--surface-color); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--primary-color); transition: transform 0.2s, box-shadow 0.2s; }
 .feature-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-
-/* Clientes */
 #clients { background-color: var(--surface-color); }
 .clients-logos { display: flex; justify-content: center; align-items: center; gap: 3rem; flex-wrap: wrap; }
-/* --- REGRA CORRIGIDA E ADICIONADA --- */
-.clients-logos img {
-    max-height: 45px;
-    width: auto;
-    object-fit: contain;
-    filter: grayscale(1) opacity(0.7);
-    transition: all 0.3s ease;
-}
-.clients-logos img:hover {
-    filter: grayscale(0) opacity(1);
-    transform: scale(1.1);
-}
-/* --- FIM DA CORREÇÃO --- */
-
+.clients-logos img { max-height: 45px; width: auto; object-fit: contain; filter: grayscale(1) opacity(0.7); transition: all 0.3s ease; }
+.clients-logos img:hover { filter: grayscale(0) opacity(1); transform: scale(1.1); }
 .plans-container { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
 .plan-card { background-color: var(--surface-color); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); flex-basis: 300px; text-align: center; transition: all 0.3s; }
 .plan-card.popular { border-color: var(--primary-color); transform: scale(1.05); }
@@ -125,22 +105,101 @@ h2 { font-size: 2.5rem; margin-bottom: 3rem; }
 .plan-card ul { list-style: none; margin: 1.5rem 0; }
 .plan-card li { margin-bottom: 0.5rem; color: var(--text-muted-color); }
 .plan-card .cta-button { margin-top: 1rem; }
-
-/* Elementos Flutuantes e Rodapé */
 .whatsapp-fab { position: fixed; bottom: 25px; right: 25px; background-color: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 2rem; z-index: 1001; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); transition: transform 0.2s; }
 .whatsapp-fab:hover { transform: scale(1.1); }
 footer { text-align: center; padding: 2rem; margin-top: 2rem; background-color: var(--secondary-color); border-top: 1px solid var(--border-color); font-size: 0.9rem; color: var(--text-muted-color); }
 
-/* Media Queries para Responsividade */
+
+/* ======================================================= */
+/*             MEDIA QUERIES - NOVO MENU PARCIAL           */
+/* ======================================================= */
+
 @media (max-width: 992px) {
-    .nav-links { position: fixed; top: 0; right: 0; height: 100vh; width: 70%; max-width: 300px; background-color: var(--surface-color); flex-direction: column; justify-content: center; align-items: center; gap: 3rem; z-index: 1002; box-shadow: -10px 0 30px rgba(0,0,0,0.2); transform: translateX(100%); transition: transform 0.4s ease-in-out; }
-    .nav-links.active { transform: translateX(0); }
-    .nav-links a { font-size: 1.2rem; }
-    .hamburger-menu { display: block; }
-    .close-menu-btn { display: block; position: absolute; top: 2rem; right: 2rem; }
-    .close-menu-btn a { font-size: 1.8rem; }
-    .demo-container { flex-direction: column; }
-    .crane-area { width: 100%; height: auto; aspect-ratio: 16 / 10; }
+    /* --- Estilos do Novo Menu Mobile Parcial --- */
+    .nav-links {
+        /* Comportamento da sobreposição */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 40vh; /* <<-- MUDANÇA PRINCIPAL: Apenas 40% da altura da tela */
+        
+        /* Aparência com efeito vidro fosco */
+        background-color: var(--menu-overlay-bg);
+        -webkit-backdrop-filter: blur(10px); /* Para Safari */
+        backdrop-filter: blur(10px); /* Efeito de desfoque */
+        border-bottom: 1px solid var(--border-color);
+        
+        /* Layout dos links */
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start; /* <<-- MUDANÇA: Alinha os itens à esquerda */
+        padding: 0 5%; /* Adiciona um espaçamento lateral igual ao do header */
+        gap: 1.5rem; /* <<-- MUDANÇA: Espaçamento menor entre os links */
+        z-index: 1002;
+
+        /* Animação inicial (escondido acima da tela) */
+        transform: translateY(-100%);
+        transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+        pointer-events: none; /* Evita cliques quando o menu está escondido */
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        pointer-events: auto; /* Permite cliques quando o menu está visível */
+    }
+    
+    /* Efeito cascata para os links */
+    .nav-links li {
+        opacity: 0;
+        transform: translateX(-20px); /* <<-- MUDANÇA: Animação vem da esquerda */
+        transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+    
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .nav-links.active li:nth-child(2) { transition-delay: 0.1s; }
+    .nav-links.active li:nth-child(3) { transition-delay: 0.15s; }
+    .nav-links.active li:nth-child(4) { transition-delay: 0.2s; }
+    .nav-links.active li:nth-child(5) { transition-delay: 0.25s; }
+
+    /* Estilo dos links no menu aberto */
+    .nav-links a {
+        font-size: 1.2rem; /* <<-- MUDANÇA: Fonte menor */
+        font-weight: 600;
+        padding: 0.5rem 0; /* Adiciona área de clique vertical */
+    }
+
+    /* O botão de fechar (X) continua no mesmo lugar */
+    .close-menu-btn {
+        display: block;
+        position: absolute;
+        top: 2rem;
+        right: 5%;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    .close-menu-btn a {
+        font-size: 1.8rem;
+    }
+    
+    /* Botão hambúrguer */
+    .hamburger-menu {
+        display: block;
+    }
+
+    /* Ajustes na Demonstração ao Vivo (sem mudanças aqui) */
+    .demo-container {
+        flex-direction: column;
+    }
+    .crane-area {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 10;
+    }
 }
 
 @media (max-width: 768px) {
