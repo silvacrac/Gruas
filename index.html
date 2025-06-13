@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-lang-key="siteTitle">GruaGuard - Monitoramento Inteligente por Tsolution</title>
+    <!-- CAMINHO CORRIGIDO -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body class="dark-mode">
+
+    <header>
+        <nav>
+            <div class="logo">GruaGuard</div>
+            <ul class="nav-links">
+                <li class="close-menu-btn"><a href="#"><i class="fas fa-times"></i></a></li>
+                <li><a href="#live-demo" data-lang-key="navDemo">Tecnologia em Ação</a></li>
+                <li><a href="#features" data-lang-key="navFeatures">Recursos</a></li>
+                <li><a href="#plans" data-lang-key="navPlans">Planos</a></li>
+                <li><a href="#clients" data-lang-key="navClients">Clientes</a></li>
+            </ul>
+            <div class="nav-controls">
+                <div class="dropdown" id="lang-dropdown">
+                    <button class="dropdown-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-lang">PT</span>
+                        <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" id="lang-pt">Português</a>
+                        <a href="#" id="lang-en">English</a>
+                    </div>
+                </div>
+                <div class="dropdown" id="theme-dropdown">
+                    <button class="dropdown-toggle" id="theme-toggle-button">
+                        <i id="theme-icon" class="fas fa-moon"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" id="theme-light"><i class="fas fa-sun"></i> <span data-lang-key="themeLight">Claro</span></a>
+                        <a href="#" id="theme-dark"><i class="fas fa-moon"></i> <span data-lang-key="themeDark">Escuro</span></a>
+                        <a href="#" id="theme-system"><i class="fas fa-desktop"></i> <span data-lang-key="themeSystem">Sistema</span></a>
+                    </div>
+                </div>
+                <button class="hamburger-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1 data-lang-key="heroTitle">Segurança e Eficiência Elevadas a um Novo Patamar</h1>
+                <p data-lang-key="heroSubtitle">GruaGuard utiliza Visão Computacional de ponta para monitorar operações de gruas 24/7, eliminando riscos e otimizando a produtividade do seu canteiro de obras.</p>
+                <a href="#live-demo" class="cta-button" data-lang-key="heroButton">Veja a Tecnologia em Ação</a>
+            </div>
+        </section>
+        
+        <section id="live-demo">
+            <h2 data-lang-key="demoTitle">Demonstração ao Vivo do Sistema</h2>
+            <div class="demo-container">
+                <div class="crane-area">
+                    <video autoplay muted loop id="bg-video">
+                        <!-- CAMINHO CORRIGIDO -->
+                        <source src="assets/crane-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay"></div>
+                    <div id="detected-load"><div class="label" data-lang-key="labelLoad">CARGA</div></div>
+                    <div id="detected-worker"><div class="label" data-lang-key="labelWorker">PESSOA</div></div>
+                </div>
+                <div class="dashboard">
+                    <h3 data-lang-key="dashboardTitle">Painel de Controle - GruaGuard AI</h3>
+                    <div id="status-panel" class="status-ok">
+                        <h4 data-lang-key="statusHeader">Status do Sistema</h4>
+                        <p id="status-text" data-lang-key="statusNormal">Operação Normal</p>
+                    </div>
+                    <div class="data-log">
+                        <h4 data-lang-key="dataHeader">Dados da Análise em Tempo Real</h4>
+                        <ul>
+                            <li><strong><i class="fas fa-weight-hanging"></i> <span data-lang-key="dataWeight">Peso Estimado</span>:</strong> <span id="data-weight">3.2 Ton</span></li>
+                            <li><strong><i class="fas fa-arrows-alt-h"></i> <span data-lang-key="dataPosition">Posição (X,Z)</span>:</strong> <span id="data-position">34.1m, 12.5m</span></li>
+                            <li><strong><i class="fas fa-arrows-alt-v"></i> <span data-lang-key="dataHeight">Altura (Y)</span>:</strong> <span id="data-height">25.7 m</span></li>
+                            <li><strong><i class="fas fa-users"></i> <span data-lang-key="dataPeople">Pessoas na Zona</span>:</strong> <span id="data-people">1</span></li>
+                            <li><strong><i class="fas fa-wind"></i> <span data-lang-key="dataWind">Vel. Vento</span>:</strong> <span id="data-wind">12 km/h</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <h2 data-lang-key="featuresTitle">Recursos de Ponta para Máxima Segurança</h2>
+            <div class="features-grid">
+                <div class="feature-card"><h4 data-lang-key="feature1Title">Alertas em Tempo Real</h4><p data-lang-key="feature1Desc">Notificações sonoras e visuais para o operador ao detectar risco de colisão com pessoas ou estruturas.</p></div>
+                <div class="feature-card"><h4 data-lang-key="feature2Title">Mapeamento 3D da Zona</h4><p data-lang-key="feature2Desc">Definição de zonas proibidas e seguras, com monitoramento contínuo da posição da carga em um ambiente 3D.</p></div>
+                <div class="feature-card"><h4 data-lang-key="feature3Title">Análise de Carga e Estabilidade</h4><p data-lang-key="feature3Desc">Estima o peso e a estabilidade da carga, prevenindo sobrecargas e movimentos perigosos.</p></div>
+                <div class="feature-card"><h4 data-lang-key="feature4Title">Relatórios e Análises</h4><p data-lang-key="feature4Desc">Geração de relatórios de operação para auditoria, conformidade e melhoria contínua de processos.</p></div>
+            </div>
+        </section>
+
+        <section id="clients">
+            <h2 data-lang-key="clientsTitle">Confiança de Líderes da Indústria</h2>
+            <div class="clients-logos">
+                <!-- CAMINHOS CORRIGIDOS -->
+                <img src="images/logo-construtora-alfa.png" alt="Logo da Construtora Alfa">
+                <img src="images/logo-beta-engenharia.png" alt="Logo da Beta Engenharia">
+                <img src="images/logo-infraprime.png" alt="Logo da InfraPrime Soluções">
+                <img src="images/logo-horizonte-edificacoes.png" alt="Logo da Horizonte Edificações">
+            </div>
+        </section>
+        
+        <section id="plans">
+            <h2 data-lang-key="plansTitle">Planos Flexíveis para Cada Projeto</h2>
+            <div class="plans-container">
+                <div class="plan-card"><h3>Essencial</h3><p class="price" data-lang-key="price1">Sob Consulta</p><ul><li>Monitoramento 1 Grua</li><li>Alertas em Tempo Real</li><li>Dashboard Online</li><li>Suporte Básico</li></ul><a href="https://wa.me/258848757469" class="cta-button" data-lang-key="planButton">Consultar</a></div>
+                <div class="plan-card popular"><h3>Profissional</h3><p class="price" data-lang-key="price2">Sob Consulta</p><ul><li>Até 5 Gruas</li><li>Todos os recursos Essencial</li><li>Mapeamento 3D</li><li>Relatórios Avançados</li></ul><a href="https://wa.me/258848757469" class="cta-button" data-lang-key="planButton">Consultar</a></div>
+                <div class="plan-card"><h3>Enterprise</h3><p class="price" data-lang-key="price3">Sob Consulta</p><ul><li>Gruas Ilimitadas</li><li>Todos os recursos Profissional</li><li>API de Integração</li><li>Suporte Dedicado 24/7</li></ul><a href="https://wa.me/258848757469" class="cta-button" data-lang-key="planButton">Consultar</a></div>
+            </div>
+        </section>
+    </main>
+    
+    <a href="https://wa.me/258848757469" id="whatsapp" target="_blank" class="whatsapp-fab">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <p data-lang-key="footerText">© 2024 GruaGuard. Um produto desenvolvido pela Tsolution.</p>
+    </footer>
+
+    <!-- CAMINHO CORRIGIDO -->
+    <script src="script.js"></script>
+
+</body>
+</html>
